@@ -12,7 +12,7 @@
     <form action="/created_ninja" method="POST">
         <div class="form-group">
             <label for="dojo_id">Dojos</label>
-            <select name="dojo_id">
+            <select name="dojo_id" id="dojo_id">
                 {% for dojo in all_dojos %}
                 <option value="{{dojo.id}}">{{dojo.name}}</option>
                 {% endfor %}
@@ -32,5 +32,6 @@
         </div>
         <button type="submit" value="created" class="btn btn-primary">Create</button>
     </form>
+    <a href="/">Home</a>
 </body>
 </html>

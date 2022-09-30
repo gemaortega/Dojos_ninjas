@@ -4,7 +4,7 @@ from flask import render_template, redirect, request
 
 @app.route('/')
 def root():
-    return "redirect()"
+    return redirect('/dojos')
 
 @app.route("/dojos")
 def dojos():
