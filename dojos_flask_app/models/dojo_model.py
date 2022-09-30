@@ -11,7 +11,7 @@ class Dojo:
 
     @classmethod
     def created(cls, data):
-        query = "INSERT INTO dojos (name) VALUES(%(name)s);"
+        query = "INSERT INTO dojos (name) VALUES (%(name)s);"
         result= connectToMySQL ('esquemas_dojos_y_ninjas').query_db(query, data)
         return result
 
@@ -27,9 +27,14 @@ class Dojo:
 
     @classmethod
     def get_dojo(cls, data):
-        query = "SELECT * FROM dojos WHERE id = %()s;"
+        print(f"get_dojo. data: {data}")
+        query = "SELECT * FROM dojos WHERE id = %(id)s;"
         result= connectToMySQL('esquemas_dojos_y_ninjas').query_db(query, data)
+        print(f"get_dojo. result: {result}")
         return cls(result[0])
 
-
-    
+    @classmethod
+    def get_ninjas_in_dojo(cls, data):
+        consulta = """SELECT * FROM ninjas JOIN dojos ON ninjas.dojo_id = dojos.id WHERE dojos.id = %(id)s;"""
+        result = connectToMySQL('esquemas_dojos_y_ninjas').query_db(consulta, data)
+        return result

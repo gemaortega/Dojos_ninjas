@@ -8,7 +8,7 @@
     <title>Show</title>
 </head>
 <body>
-    <h1>AQUI EL NOBRE DEL Dojo</h1>
+    <h1>Dojo: {{dojo.name}}</h1>
     <table>
         <th>
             <tr>
@@ -16,7 +16,7 @@
                 <th>Last name</th>
                 <th>Age</th>
             </tr>
-            {% for ninja in ninja_in_dojo %}
+            {% for ninja in ninjas_in_dojo %}
             <tr>
                 <td>{{ninja.first_name}}</td>
                 <td>{{ninja.last_name}}</td>

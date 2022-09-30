@@ -18,8 +18,12 @@ def created():
 
 @app.route('/dojos/<int:dojo_id>')
 def show_dojo(dojo_id):
-    data = {"id":dojo_id}
+    data = {
+        "id": dojo_id
+    }
     dojo = Dojo.get_dojo(data)
+    print(f'show_dojo. dojo: {dojo}')
     ninjas_in_dojo = Dojo.get_ninjas_in_dojo(data)
+    print(f'show_dojo. ninjas_in_dojo: {ninjas_in_dojo}')
     return render_template('show.html', dojo=dojo, ninjas_in_dojo=ninjas_in_dojo)
 
