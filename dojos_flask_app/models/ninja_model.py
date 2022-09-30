@@ -15,14 +15,12 @@ class Ninja:
     @classmethod
     def created_ninja(cls, data):
         query = """INSERT INTO ninjas (first_name, last_name, age, dojo_id)
-        VALUES(%(first_name)s, %(last_name)s, %(age)s, %(dojo_id)s, NOW(), NOW()"""
-        result= connectToMySQL ('shema_dojos_ninjas').query_db(query, data)
+        VALUES(%(first_name)s, %(last_name)s, %(age)s, %(dojo_id)s);"""
+        result= connectToMySQL('esquemas_dojos_y_ninjas').query_db(query, data)
         return result
 
     @classmethod
     def get_ninja(cls, data):
-        query= "SELECT *FROM ninjas WHERE id = %(id)s;"
-        result = connectToMySQL ('shema_dojos_ninjas').query_db(query, data)
-        return result
-
-
+        query = "SELECT * FROM ninjas WHERE id = %(id)s;"
+        result = connectToMySQL('esquemas_dojos_y_ninjas').query_db(query, data)
+        return cls(result[0])

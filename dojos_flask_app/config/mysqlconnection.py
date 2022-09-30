@@ -1,14 +1,10 @@
-import pymysql
 import pymysql.cursors
-
-connection = pymysql.connect(host='186.106.112.47', trusted=True)
-
 
 # this class will give us an instance of a connection to our database
 class MySQLConnection:
     def __init__(self, db):
-        connection = pymysql.connect(host = '186.106.112.47',
-                                    user = 'root', # change the user and password as needed
+        connection = pymysql.connect(host = 'localhost',
+                                    user = 'root',
                                     password = 'pandemia', 
                                     db = db,
                                     charset = 'utf8mb4',
@@ -17,7 +13,6 @@ class MySQLConnection:
         # establish the connection to the database
         self.connection = connection
 
-    # the method to query the database
     def query_db(self, query, data=None):
         with self.connection.cursor() as cursor:
             try:
@@ -36,11 +31,9 @@ class MySQLConnection:
                     # UPDATE and DELETE queries will return nothing
                     self.connection.commit()
             except Exception as e:
-                # if the query fails the method will return FALSE
                 print("Something went wrong", e)
                 return False
             finally:
-                # close the connection
                 self.connection.close() 
 
 # connectToMySQL receives the database we're using and uses it to create an instance of MySQLConnection

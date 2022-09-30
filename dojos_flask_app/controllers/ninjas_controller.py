@@ -10,18 +10,13 @@ def form_ninja():
     return render_template('ninjas.html', all_dojos=all_dojos)
 
 
-@app.route("/created_ninjas", methods=['POST'])
+@app.route("/created_ninja", methods=['POST'])
 def created_ninja():
     print(request.form, "CONTIENE")
     id_ninja = Ninja.created_ninja(request.form)
-    data={
+    data = {
         "id": id_ninja
     }
-    a_ninja = Ninja.get_ninja(data)
-    print(a_ninja, "CONTIENE")
-    return redirect(f'/dojos/{a_ninja.dojo_id}')
-
-@app.route('/')
-def root():
-    return render_template('login_reg.html')
-
+    ninja = Ninja.get_ninja(data)
+    print(ninja, "CONTIENE")
+    return redirect(f'/dojos/{ninja.dojo_id}')

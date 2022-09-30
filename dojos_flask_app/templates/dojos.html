@@ -17,16 +17,16 @@
         <form action="/created" method="POST">
             <label for="name">Name:</label>
             <input type="text" name="name">
-            <button type="submit" value="created" class="btn btn-secondary">
+            <button type="submit" value="created" class="btn btn-secondary">Create</button>
         </form>
     </div>
     <div>
         <h2>All Dojos</h2>
-            <ul>
-                {% for dojo in all_dojos %}
-                <li><a hreff="/dojos/{{dojo.id}}">{{dojo['name']}}</a></li>
-                {{%enford%}}
-            </ul>
+        <ul>
+            {% for dojo in all_dojos %}
+            <li><a hreff="/dojos/{{dojo.id}}">{{dojo['name']}}</a></li>
+            {% endfor %}
+        </ul>
     </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
